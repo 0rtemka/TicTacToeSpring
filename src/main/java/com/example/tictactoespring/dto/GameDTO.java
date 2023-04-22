@@ -13,5 +13,6 @@ public class GameDTO {
     private String gameId;
     private String board;
     private String winner;
+    private String type;
     private String currentTurnType;
 }

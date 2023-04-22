@@ -37,7 +37,7 @@ public class GamesController {
             response.addCookie(cookie);
             usersType.put(cookie.getValue(), type);
 
-            return gameService.convertToGameDTO(gameService.connectGame());
+            return gameService.convertToGameDTO(gameService.connectGame(), type.name());
         }
 
         Game game = gameService.findGameById(gameId);

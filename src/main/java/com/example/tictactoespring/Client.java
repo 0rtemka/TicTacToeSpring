@@ -1,5 +1,9 @@
 package com.example.tictactoespring;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -13,9 +17,15 @@ public class Client {
         RestTemplate template = new RestTemplate();
         Scanner scanner = new Scanner(System.in);
 
-        Map<String, String> game = template.getForObject(host, HashMap.class);
-        String type = game.get("type");
+        ResponseEntity<HashMap> response = template.getForEntity(host, HashMap.class);
+
+        String cookies = response.getHeaders().getFirst(HttpHeaders.SET_COOKIE);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Cookie", cookies);
+
+        HashMap<String, String> game = response.getBody();
         String gameId = game.get("gameId");
+        String type = game.get("type");
 
         while (true) {
             System.out.println(game.get("board"));
@@ -48,11 +58,13 @@ public class Client {
                 Map<String, String> request = Map.of(
                         "gameId", gameId,
                         "x", String.valueOf(x),
-                        "y", String.valueOf(y),
-                        "type", type
+                        "y", String.valueOf(y)
                 );
 
-                game = template.postForObject(host, request, HashMap.class);
+                HttpEntity entity = new HttpEntity(request, headers);
+                ResponseEntity<HashMap> response1 = template.exchange(host, HttpMethod.POST, entity, HashMap.class);
+
+                game = response1.getBody();
             }
         }
     }

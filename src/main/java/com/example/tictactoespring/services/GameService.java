@@ -135,17 +135,17 @@ public class GameService {
         return false;
     }
 
-//    public GameDTO convertToGameDTO(Game game, String type) {
-//        GameDTO gameDTO = new GameDTO();
-//
-//        gameDTO.setGameId(game.getGameId());
-//        gameDTO.setBoard(drawBoard(game));
-//        gameDTO.setWinner(game.getWinner());
-//        gameDTO.setType(type);
-//        gameDTO.setCurrentTurnType(game.getCurrentTurnType().toString());
-//
-//        return gameDTO;
-//    }
+    public GameDTO convertToGameDTO(Game game, String type) {
+        GameDTO gameDTO = new GameDTO();
+
+        gameDTO.setGameId(game.getGameId());
+        gameDTO.setBoard(drawBoard(game));
+        gameDTO.setWinner(game.getWinner());
+        gameDTO.setType(type);
+        gameDTO.setCurrentTurnType(game.getCurrentTurnType().toString());
+
+        return gameDTO;
+    }
 
     public GameDTO convertToGameDTO(Game game) {
         GameDTO gameDTO = new GameDTO();
