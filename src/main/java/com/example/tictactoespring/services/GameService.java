@@ -135,17 +135,17 @@ public class GameService {
         return false;
     }
 
-    public GameDTO convertToGameDTO(Game game, String type) {
-        GameDTO gameDTO = new GameDTO();
-
-        gameDTO.setGameId(game.getGameId());
-        gameDTO.setBoard(drawBoard(game));
-        gameDTO.setWinner(game.getWinner());
-        gameDTO.setType(type);
-        gameDTO.setCurrentTurnType(game.getCurrentTurnType().toString());
-
-        return gameDTO;
-    }
+//    public GameDTO convertToGameDTO(Game game, String type) {
+//        GameDTO gameDTO = new GameDTO();
+//
+//        gameDTO.setGameId(game.getGameId());
+//        gameDTO.setBoard(drawBoard(game));
+//        gameDTO.setWinner(game.getWinner());
+//        gameDTO.setType(type);
+//        gameDTO.setCurrentTurnType(game.getCurrentTurnType().toString());
+//
+//        return gameDTO;
+//    }
 
     public GameDTO convertToGameDTO(Game game) {
         GameDTO gameDTO = new GameDTO();
@@ -158,11 +158,11 @@ public class GameService {
         return gameDTO;
     }
 
-    public GamePlay convertToGamePlay(GameRequest gameRequest) {
+    public GamePlay convertToGamePlay(GameRequest gameRequest, TicTacToe type) {
         GamePlay gamePlay = new GamePlay(
                 gameRequest.getX(),
                 gameRequest.getY(),
-                TicTacToe.valueOf(gameRequest.getType())
+                type
         );
 
         return gamePlay;
