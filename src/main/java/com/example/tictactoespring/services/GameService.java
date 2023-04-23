@@ -158,11 +158,11 @@ public class GameService {
         return gameDTO;
     }
 
-    public GamePlay convertToGamePlay(GameRequest gameRequest) {
+    public GamePlay convertToGamePlay(GameRequest gameRequest, TicTacToe type) {
         GamePlay gamePlay = new GamePlay(
                 gameRequest.getX(),
                 gameRequest.getY(),
-                TicTacToe.valueOf(gameRequest.getType())
+                type
         );
 
         return gamePlay;
