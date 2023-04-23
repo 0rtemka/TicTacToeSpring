@@ -10,4 +10,5 @@ http://localhost:8080 [POST] - make turn with body:
   gameId: {gameId}
   x: {coordinate X}
   y: {coordinate Y}
+  type: {X/O}
 }
